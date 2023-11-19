@@ -21,10 +21,10 @@ jobs:
         run: |
           if git diff --name-only ${{ github.base_ref }}...${{ github.sha }} | grep -q 'CHANGELOG.md'; then
             echo "File has been modified"
-            echo "::set-output name=file_modified::true"
+            echo "file_modified=true" >> "$GITHUB_OUTPUT"
           else
             echo "File not modified"
-            echo "::set-output name=file_modified::false"
+            echo "file_modified=false" >> "$GITHUB_OUTPUT"
           fi
       - name: Fail (if not modified)
         if: steps.check_file.outputs.file_modified == 'false'
