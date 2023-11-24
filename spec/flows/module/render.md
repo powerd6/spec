@@ -7,8 +7,8 @@ This process combines the information in the schema and content to create human-
 The order in which the content will be rendered on is defined in the following manner:
 
 - Each schema will be rendered in the order based on:
-    - the `renderOrder` property of the schema, from lower to highest
-    - the `name` of the schema, alphabetically
+  - the `renderOrder` property of the schema, from lower to highest
+  - the `name` of the schema, alphabetically
 - Each content piece for a given schema will be rendered in the order based on:
-    - the `renderOrder` property of the content, from lower to highest
-    - the `id` of the content, alphabetically
+  - the `renderOrder` property of the content, from lower to highest
+  - the `id` of the content, alphabetically
