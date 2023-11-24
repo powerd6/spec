@@ -1,0 +1,37 @@
+name: Release
+
+on:
+  release:
+    types: published
+
+permissions:
+    contents: write
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install markedpp
+        run: npm install -g markedpp
+      - name: Execute markedpp
+        working-directory: spec
+        run: markedpp README.md > specification.md
+      - uses: actions/upload-artifact@v3
+        with:
+          name: specification
+          path: spec/specification.md
+  release:
+    name: Release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: specification
+      - name: Upload specification
+        run: gh release upload ${{github.event.release.tag_name}} specification.md
+        env:
+          GITHUB_TOKEN: ${{ github.TOKEN }}
