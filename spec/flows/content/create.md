@@ -1,5 +1,5 @@
 # Create content
 
-Follow the schema
+Content are pieces of data that follow a certain schema.
 
-Use validator to verify
+When creating content, make sure to follow the schema validation rules.
