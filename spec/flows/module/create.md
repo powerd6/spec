@@ -1,4 +1,4 @@
-#### Creating a module
+# Creating a module
 
 Creating a new module from scratch is a simple operation.
 

@@ -1,4 +1,4 @@
-#### Render a module
+# Render a module
 
 Rendering a module is the process that creates a finished book.
 

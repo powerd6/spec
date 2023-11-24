@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      # TODO: replace this with something that does not fail mdlint
       - name: Install markedpp
         run: npm install -g markedpp
       - name: Execute markedpp

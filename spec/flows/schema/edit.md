@@ -1,4 +1,4 @@
-#### Extending a schema
+# Extending a schema
 
 To extend a schema you must change it's properties.
 
