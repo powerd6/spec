@@ -1,8 +1,8 @@
-# Combining modules
+#### Combining modules
 
 Combining modules is the mechanism offered by powerd6 to allow for changes to modules to be carried out in a simple manner.
 
-## Combination rules
+##### Combination rules
 
 Combining a module `A` with an empty module will result in a exact copy of `A`
 
@@ -30,7 +30,7 @@ When combining a module `A` with another module `B` (in the order `A+B`), result
             - If `B` has the property with a `null` value, then the property is removed from `C`
             - If `B` has a property with a non-`null` value, then the value from `B` will be present in `C`
 
-### Order of operations
+###### Order of operations
 
 When combining modules, the order of the operations matter.
 

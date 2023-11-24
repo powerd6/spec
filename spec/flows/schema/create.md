@@ -1,4 +1,4 @@
-# Creating a schema
+#### Creating a schema
 
 When creating a schema define it with the appropriate fields.
 

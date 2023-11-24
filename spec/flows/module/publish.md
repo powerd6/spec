@@ -1,4 +1,4 @@
-# Publishing a module
+#### Publishing a module
 
 To publish a module, some extra information is needed.
 

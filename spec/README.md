@@ -6,10 +6,10 @@ Version: `0.0.1`
 
 This specification is unstable and constantly evolving.
 
-## Glossary
+!toc
 
-See the [terms](./terms/) directory for a list of terms used throughout this documentation.
+!include (terms/_.md)
 
-## Actors
+!include (actors/_.md)
 
-To better understand the roles of the users and the actions they can take, their profiles are defined under the [actors](./actors/) directory.
+!include (flows/_.md)
