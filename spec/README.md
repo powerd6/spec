@@ -2,6 +2,6 @@
 
 Version: `0.0.1`
 
-# Foreword
+## Foreword
 
 This specification is unstable and constantly evolving.

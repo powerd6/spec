@@ -10,4 +10,5 @@ Schema rendering logic are defined with [tera templates](https://github.com/Keat
 
 While rendering logic is not required, rendering is not possible without it.
 
-Its possible to keep rendering logic as a separate module, but that may complicate things for users wanting to use your schema.
+Its possible to keep rendering logic as a separate module, but that may
+ complicate things for users wanting to use your schema.
