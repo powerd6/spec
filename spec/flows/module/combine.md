@@ -21,7 +21,8 @@ When combining a module `A` with another module `B` (in the order `A+B`),
     - All properties that exist only on `A` will be unchanged
     - All properties that exist only on `B` will be unchanged
     - Properties that exist on `A` and `B` will be modified as follows:
-      - If `B` has the property with a `null` value, then the property is removed from `C`
+      - If `B` has the property with a `null` value, then the property is
+         removed from `C`
       - If `B` has a property with a non-`null` value, then the value from `B`
          will be present in `C`
 - For content:
