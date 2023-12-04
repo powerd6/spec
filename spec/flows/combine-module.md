@@ -1,8 +1,5 @@
 # Combining modules
 
-Combining modules is the mechanism offered by powerd6 to allow for changes to
- modules to be carried out in a simple manner.
-
 ## Combination rules
 
 Combining a module `A` with an empty module will result in a exact copy of `A`
