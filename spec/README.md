@@ -14,4 +14,5 @@ This specification is organized in the following sections:
     specification.
 - [Actors](./actors/README.md): Generalized end-user archetypes used to
     encapsulate end-user needs and how they relate to the project.
-- [Flows](./flows/README.md): The actions that actors can take.
+- [Flows](./flows/README.md): The actions that actors can take to accomplish
+    something.

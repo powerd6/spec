@@ -1,3 +1,3 @@
 # Flows
 
-These are the operations that can be executed:
+Flows are the series of actions that actors can take to accomplish something.
