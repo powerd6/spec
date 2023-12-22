@@ -16,3 +16,5 @@ This specification is organized in the following sections:
    encapsulate end-user needs and how they relate to the project.
 - [Flows](./flows/README.md): The actions that actors can take to accomplish
    something.
+
+<!-- TODO: Add a "notable changes" section in further updates -->
