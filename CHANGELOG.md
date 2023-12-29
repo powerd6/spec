@@ -19,6 +19,7 @@ This is the first sketch of the specification
 - List of keywords used in the specification
 - Define module, content and schema structures
 - JSON Schema files
+- Website format for specification
 
 ### Fixed
 
