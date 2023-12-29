@@ -1,3 +1,8 @@
+<!-- markdownlint-configure-file
+{
+  "no-duplicate-heading": false
+}
+-->
 # Changelog
 
 All notable changes to this project will be documented in this file.
