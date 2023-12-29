@@ -7,7 +7,8 @@ it was sourced from. This is done by providing information in the `module` secti
 
 It is important to note that the module should only contain one `module.references`
 property named after the unique module id, where the value are one or more
-[URI references](https://datatracker.ietf.org/doc/html/rfc3986) to where to source the module from.
+[URI references](https://datatracker.ietf.org/doc/html/rfc3986) to where to source
+the module from.
 
 ## Ensuring unique module identifiers
 
@@ -28,4 +29,5 @@ unique:
 
 To sell a module, a creator should use a file-sharing service that processes payments.
 
-For example, a creator may choose to share a module only to their subscribers, while others may simply host it on their website for free.
+For example, a creator may choose to share a module only to their subscribers,
+while others may simply host it on their website for free.

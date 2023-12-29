@@ -10,13 +10,15 @@ modules in order to craft their custom experiences.
 In the following section, modules will be named by capital letters
 (`A`, `B`, `C`, etc) and the plus sign (`+`) will be used to represent a combination.
 
-For example, `A+B=C` means: "Module `A` being combined with module `B`, resulting in module `C`".
+For example, `A+B=C` means: "Module `A` being combined with module `B`, resulting
+in module `C`".
 
 ### Blanks
 
 `A+{}=A`
 
-When combining a module with a blank module, the results is the same as the first module.
+When combining a module with a blank module, the results is the same as the first
+module.
 
 
 ### Identity
@@ -42,14 +44,16 @@ Module `C` will contain all the authorship information from `A` and `B`.
 
 #### Module information, Content and Schemas
 
-Module information, content and schemas that are defined only on `A` or only on `B` will be present
-in `C` without changes.
+Module information, content and schemas that are defined only on `A` or only on
+`B` will be present in `C` without changes.
 
-Module information, content and schemas that exist in  `A` and `B` will be merged as follows:
+Module information, content and schemas that exist in  `A` and `B` will be merged
+as follows:
 
 - All properties that exist only on `A` or only on `B` will be unchanged.
 - Properties that exist in `A` and `B` are modified:
   - If the property in `B` is `null`, then the property is removed from `C`.
-  - If the property in `B` is not `null`, the the property in `C` will use the value from `B`
+  - If the property in `B` is not `null`, the the property in `C` will use the
+    value from `B`
 
 This set of rules is also known as a [JSON merge patch](https://datatracker.ietf.org/doc/html/rfc7386).
