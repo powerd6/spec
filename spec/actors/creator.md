@@ -7,9 +7,11 @@ Creators possibly have a financial incentive to contribute, but may also be
 product.
 
 ## Objectives
+
 - Create something new
 - Share their creations
 - Sell their content
 
 ## Concerns
+
 - Unlawful distribution (copyright violations, piracy, etc)
