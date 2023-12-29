@@ -7,4 +7,4 @@ Modules are distributed as JSON files, and
 validated by [JSON Schema](https://json-schema.org/).
 
 The format of these module files are validated by the
-[`module.schema.json`](../../schema/module.schema.json) file.
+[`module.schema.json`](../../schemas/module.schema.json) file.
