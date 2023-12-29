@@ -7,11 +7,19 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "copyfiles": "npm-run-all --parallel copyfiles:**",
+    "copyfiles:spec": "cp -r ../spec ./src/content",
+    "copyfiles:schemas": "cp -r ../schemas ./public/schemas",
+    "copyfiles:examples": "cp -r ../examples ./src/assets",
+    "postinstall": "npm run copyfiles"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.15.1",
     "astro": "^4.0.1",
     "sharp": "^0.32.5"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }
