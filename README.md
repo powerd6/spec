@@ -1,6 +1,7 @@
 # powerd6/spec
 
 This is the powerd6 specification, and it documents how the project behaves.
+
 ## Versioning
 
 Current Version: `0.0.1`
@@ -20,9 +21,9 @@ Meaningful changes between versions are documented in the
 
 This specification is organized in the following sections:
 
-- [Glossary](./glossary/README.md): Definition for common terms used across the
+- [Glossary](./spec/glossary/README.md): Definition for common terms used across the
    specification.
-- [Actors](./actors/README.md): Generalized end-user archetypes used to
+- [Actors](./spec/actors/README.md): Generalized end-user archetypes used to
    encapsulate end-user needs and how they relate to the project.
-- [Flows](./flows/README.md): The actions that actors can take to accomplish
+- [Flows](./spec/flows/README.md): The actions that actors can take to accomplish
    something.
