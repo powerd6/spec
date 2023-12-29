@@ -12,4 +12,4 @@ This is the powerd6 specification, and it documents how the project behaves.
 This specification follows the [Semantic Versioning](https://semver.org/) conventions.
 
 Meaningful changes between versions are documented in the
- [changelog file](./CHANGELOG.md).
+[changelog file](./CHANGELOG.md).

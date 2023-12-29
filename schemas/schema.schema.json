@@ -1,0 +1,23 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "http://spec.powerd6.org/schemas/schema.schema.json",
+    "title": "Module Information",
+    "description": "Powerd6 schema",
+    "type": "object",
+    "properties": {
+        "validation": {
+            "$ref": "https://json-schema.org/draft/2020-12/schema"
+        },
+        "rendering": {
+            "type": "string"
+        },
+        "renderOrder": {
+            "type": "integer"
+        }
+    },
+    "required": [
+        "validation",
+        "rendering"
+    ],
+    "unevaluatedProperties": false
+}

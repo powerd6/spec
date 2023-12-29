@@ -1,0 +1,35 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "http://spec.powerd6.org/schemas/module.schema.json",
+    "title": "Module",
+    "description": "A powerd6 module, with contents, schemas and authorship information",
+    "type": "object",
+    "properties": {
+        "module": {
+            "$ref": "http://spec.powerd6.org/schemas/module-meta.schema.json"
+        },
+        "authors": {
+            "type": "array",
+            "items": {
+                "$ref": "http://spec.powerd6.org/schemas/module-meta.schema.json"
+            }
+        },
+        "contents": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "http://spec.powerd6.org/schemas/content.schema.json"
+            }
+        },
+        "schema": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "http://spec.powerd6.org/schemas/schema.schema.json"
+            }
+        }
+    },
+    "required": [
+        "module",
+        "authors"
+    ],
+    "unevaluatedProperties": false
+}
