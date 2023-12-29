@@ -16,9 +16,9 @@
 ---
 
 - [Actors](./spec/actors/README.md)
-    - [Creator](./spec/actors/creator.md)
-    - [Maintainer](./spec/actors/maintainer.md)
-    - [Player](./spec/actors/player.md)
+  - [Creator](./spec/actors/creator.md)
+  - [Maintainer](./spec/actors/maintainer.md)
+  - [Player](./spec/actors/player.md)
 
 ---
 
