@@ -1,6 +1,46 @@
 # Combining modules
 
+Combining modules means that you will merge the contents of one module with another.
+
+In this process, some rules apply, however their simplest form is as follows:
+
+- All unique content is maintained in both sides;
+- Content with the same ID is merged as a patch;
+- Content can be deleted by a special mechanism.
+
+Combining modules is the main mechanism for players to interact with published
+modules in order to craft their custom experiences.
+
 ## Combination rules
+
+In the following section, modules will be named by capital letters
+(`A`, `B`, `C`, etc) and the plus sign (`+`) will be used to represent a combination.
+The symbol `{}` will be used to represent a blank module,
+and the symbol `ø` will be used to represent a blank property.
+
+For example, `A+B=C` means: "Module `A` being combined with module `B`, resulting in module `C`".
+
+### Blanks
+
+`A+{}=A`
+
+When combining a module with a blank module, the results is the same as the first module.
+
+
+### Identity
+
+`A+A=A`
+
+When combining a module with itself, the result is the same as the first module.
+
+### Non-commutative property
+
+`A+B<>B+A`
+
+When combining two modules, the order on which they are combined is meaningful and
+may produce different results.
+
+### Combination
 
 Combining a module `A` with an empty module will result in a exact copy of `A`
 
