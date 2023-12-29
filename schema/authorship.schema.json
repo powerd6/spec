@@ -9,6 +9,11 @@
             "type": "string"
         },
         "references": {
+            "description": "A list of references for the author",
+            "examples": [
+                "http://mywebsite.com",
+                "mailto:author@domain.tld"
+            ],
             "type": "array",
             "items": {
                 "type": "string",
@@ -16,8 +21,18 @@
             }
         },
         "contributions": {
-            "type": "array",
-            "items": {
+            "description": "Identifiers for schemas or contents that the author contributed to, as well as an optional explanation of the contribution",
+            "examples": [
+                {
+                    "fireball": "created icon",
+                    "spells": "contributed to rendering"
+                },
+                {
+                    "slime": ""
+                }
+            ],
+            "type": "object",
+            "additionalProperties": {
                 "type": "string"
             }
         }
