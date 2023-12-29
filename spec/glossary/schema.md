@@ -1,7 +1,3 @@
----
-singular: schema
-plural: schemas
----
 # Schema
 
 Composed on validation and rendering logic, schemas are the format definition of
