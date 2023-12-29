@@ -19,7 +19,7 @@ jobs:
       - name: Check if file is modified
         id: check_file
         run: |
-          if git diff --name-only origin/${{ github.base_ref }}...origin/${{ github.head_ref }} | grep -q 'CHANGELOG.md'; then
+          if git diff --name-only ${{ github.base_ref }}...${{ github.sha }} | grep -q 'CHANGELOG.md'; then
             echo "File has been modified"
             echo "file_modified=true" >> "$GITHUB_OUTPUT"
           else
