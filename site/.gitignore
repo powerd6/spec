@@ -21,6 +21,6 @@ pnpm-debug.log*
 .DS_Store
 
 # Content copied from repository root
-src/content/docs/spec
+src/content/spec
 src/assets/examples
 public/schemas
