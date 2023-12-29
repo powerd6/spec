@@ -5,9 +5,9 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'powerd6/specification',
+			title: 'My Docs',
 			social: {
-				github: 'https://github.com/powerd6',
+				github: 'https://github.com/withastro/starlight',
 			},
 			sidebar: [
 				{
