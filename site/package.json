@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "copyfiles": "npm-run-all --parallel copyfiles:**",
-    "copyfiles:spec": "cp -r ../spec ./src/content",
+    "copyfiles:spec": "cp -r ../spec ./src/content/docs",
     "copyfiles:schemas": "cp -r ../schemas ./public/schemas",
     "copyfiles:examples": "cp -r ../examples ./src/assets",
     "postinstall": "npm run copyfiles"

@@ -7,6 +7,13 @@
       "request": "launch",
       "type": "node-terminal",
       "cwd": "${workspaceFolder}/site"
+    },
+    {
+      "command": "npm run copyfiles",
+      "name": "Copy files",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/site",
     }
   ]
 }
