@@ -23,7 +23,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if gh pr diff --name-only ${{ github.ref }} | grep -q 'CHANGELOG.md'; then
+          if gh pr diff --name-only ${{ github.head_ref }} | grep -q 'CHANGELOG.md'; then
             echo "File has been modified"
             echo "file_modified=true" >> "$GITHUB_OUTPUT"
           else
