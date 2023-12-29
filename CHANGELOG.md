@@ -20,6 +20,10 @@ This is the first sketch of the specification
 - Define module, content and schema structures
 - JSON Schema files
 
+### Fixed
+
+- Check for CHANGELOG.md updates now works correctly
+
 ## [0.0.0](https://github.com/powerd6/spec/releases/tag/v0.0.0)
 
 ### Added
