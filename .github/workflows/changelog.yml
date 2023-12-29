@@ -20,6 +20,8 @@ jobs:
           fetch-depth: 0
       - name: Check if file is modified
         id: check_file
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           if gh pr diff --name-only ${{ github.ref }} | grep -q 'CHANGELOG.md'; then
             echo "File has been modified"
