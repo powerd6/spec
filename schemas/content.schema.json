@@ -5,6 +5,16 @@
     "description": "Content pieces in powerd6",
     "type": "object",
     "properties": {
+        "schema": {
+            "description": "The identifier of the schema that this content follows",
+            "type": "string"
+        },
+        "renderOrder": {
+            "type": "integer"
+        }
     },
-    "unevaluatedProperties": false
+    "required": [
+        "schema"
+    ],
+    "additionalProperties": true
 }

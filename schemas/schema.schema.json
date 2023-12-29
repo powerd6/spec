@@ -5,6 +5,19 @@
     "description": "Powerd6 schema",
     "type": "object",
     "properties": {
+        "validation": {
+            "$ref": "https://json-schema.org/draft/2020-12/schema"
+        },
+        "rendering": {
+            "type": "string"
+        },
+        "renderOrder": {
+            "type": "integer"
+        }
     },
+    "required": [
+        "validation",
+        "rendering"
+    ],
     "unevaluatedProperties": false
 }

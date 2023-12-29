@@ -15,10 +15,16 @@
             }
         },
         "contents": {
-            "$ref": "http://spec.powerd6.org/schemas/content.schema.json"
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "http://spec.powerd6.org/schemas/content.schema.json"
+            }
         },
         "schema": {
-            "$ref": "http://spec.powerd6.org/schemas/schema.schema.json"
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "http://spec.powerd6.org/schemas/schema.schema.json"
+            }
         }
     },
     "required": [
