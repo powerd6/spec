@@ -1,0 +1,20 @@
+[book]
+title = "powerd6/specification"
+authors = [
+    "Hector Castelli Zacharias"
+]
+description = "The powerd6 specification"
+language = "en"
+multilingual = false
+src = "./"
+
+[build]
+use-default-preprocessors = false
+create-missing = true
+
+[output.html]
+curly-quotes = true
+git-repository-url = "https://github.com/powerd6/spec"
+git-repository-icon = "fa-github"
+edit-url-template = "https://github.com/powerd6/spec/edit/main/{path}"
+cname = "spec.powerd6.org"

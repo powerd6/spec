@@ -1,7 +1,3 @@
----
-singular: JSON
-plural: JSON
----
 # JSON
 
 > [JSON](https://www.json.org/) (JavaScript Object Notation) is a lightweight
