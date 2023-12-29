@@ -20,7 +20,6 @@ in module `C`".
 When combining a module with a blank module, the results is the same as the first
 module.
 
-
 ### Identity
 
 `A+A=A`

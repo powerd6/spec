@@ -22,4 +22,6 @@ In markdown, this looks like this:
 ```md
 ![a red dot](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg== "The Image")
 ```
-> Thanks to [Peter Ritchie's blog](https://blog.peterritchie.com/posts/data-urls-in-markdown) for these examples.
+
+> Thanks to [Peter Ritchie's blog](https://blog.peterritchie.com/posts/data-urls-in-markdown)
+> for these examples.
