@@ -19,8 +19,3 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
-
-# Content copied from repository root
-src/content/spec
-src/assets/examples
-public/schemas
