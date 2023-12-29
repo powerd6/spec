@@ -19,4 +19,4 @@ This is the first sketch of the specification
 
 ### Added
 
-- Initialised the repository
+- Initialized the repository
