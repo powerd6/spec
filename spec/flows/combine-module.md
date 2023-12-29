@@ -40,12 +40,12 @@ For `A+B=C`, module `C` will follow these rules:
 
 Module `C` will contain all the authorship information from `A` and `B`.
 
-#### Content and Schemas
+#### Module information, Content and Schemas
 
-Content and schemas that are defined only on `A` or only on `B` will be present
+Module information, content and schemas that are defined only on `A` or only on `B` will be present
 in `C` without changes.
 
-Content and schemas that exist in  `A` and `B` will be merged as follows:
+Module information, content and schemas that exist in  `A` and `B` will be merged as follows:
 
 - All properties that exist only on `A` or only on `B` will be unchanged.
 - Properties that exist in `A` and `B` are modified:
