@@ -12,6 +12,8 @@ src = "./"
 use-default-preprocessors = false
 create-missing = true
 
+[preprocessor.links]
+
 [output.html]
 curly-quotes = true
 git-repository-url = "https://github.com/powerd6/spec"
