@@ -1,4 +1,3 @@
-
 <!-- markdownlint-configure-file
 {
   "no-duplicate-heading": false
