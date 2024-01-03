@@ -64,13 +64,14 @@ jobs:
             echo "## [$NEXT](https://github.com/powerd6/spec/compare/$CURRENT...$NEXT)"
           ) >> CHANGELOG.md
           cat changelog.md.1 >> CHANGELOG.md
-          
+
           rm changelog.md.*
       - name: Debug files
         run: |-
           cat README.md
           echo "  "
           cat CHANGELOG.md
+          git status
 
 
         
