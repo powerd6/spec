@@ -48,7 +48,9 @@ jobs:
       CURRENT: ${{needs.get.outputs.current}}
       NEXT: ${{needs.get.outputs.next}}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          path: main
       - name: update README.md
         run: sed -i "s/$CURRENT/$NEXT/g" README.md
       - name: update CHANGELOG.md
