@@ -66,6 +66,12 @@ jobs:
           ) >> CHANGELOG.md
 
           rm changelog.md.*
+      - name: Prepare git credentials
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
+        run: |-
+          git config --global user.email "$(gh api /user | jq -r '.email')"
+          git config --global user.name "$(gh api /user | jq -r '.name')"
       - name: Commit changes
         run: |-
           git add README.md CHANGELOG.md
