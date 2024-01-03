@@ -34,8 +34,6 @@ jobs:
         run: |-
           go install github.com/maykonlf/semver-cli/cmd/semver@latest
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
-      - name: Install semver-cli
-        run: go install github.com/maykonlf/semver-cli/cmd/semver@latest
       - name: Get current version
         id: current
         run: echo "version=$(semver get release)" >> "$GITHUB_OUTPUT"
