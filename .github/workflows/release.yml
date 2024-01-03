@@ -5,6 +5,7 @@ concurrency:
   group: '${{ github.workflow }}'
 
 on:
+  # TODO: remove me before merging
   pull_request: 
   workflow_dispatch:
     inputs:
