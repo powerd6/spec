@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/powerd6/spec/compare/v0.0.1...HEAD)
 
+### Added
+
+- Website now links to schema files
+
 ## [0.0.1](https://github.com/powerd6/spec/compare/v0.0.0...v0.0.1)
 
 This is the first sketch of the specification
