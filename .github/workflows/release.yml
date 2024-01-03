@@ -91,6 +91,7 @@ jobs:
     outputs:
       pr: ${{ steps.pr.outputs.link }}
     env:
+      NEXT: ${{needs.get.outputs.next}}
       GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
     steps:
       - uses: actions/checkout@v3
@@ -99,7 +100,7 @@ jobs:
       - name: Create Pull Request
         id: pr
         run: |-
-          gh pr create --fill > PR_URL
+          gh pr create --title "chore: prepare release for $NEXT" --body "" > PR_URL
           echo "link=$PR_URL" >> "$GITHUB_OUTPUT"
   merge:
     name: Merge Pull Request
