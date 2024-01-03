@@ -42,10 +42,12 @@ jobs:
         env:
           FLAG: ${{ inputs.release_type == 'patch' && 'release' || inputs.release_type}}
         run: echo "version=$(semver up "$FLAG")" >> "$GITHUB_OUTPUT"
-  update_files:
+  prepare:
     name: Prepare release
     runs-on: ubuntu-latest
     needs: get
+    outputs:
+      pr: ${{ steps.pr.outputs.link }}
     env:
       CURRENT: ${{needs.get.outputs.current}}
       NEXT: ${{needs.get.outputs.next}}
@@ -73,9 +75,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
           BRANCH_NAME: release-${{env.NEXT}}
         run: |-
-          # Get access to create PRs
-          gh auth refresh -s project
-
           # Configure git commit user
           git config --global user.email "$(gh api /user | jq -r '.email')"
           git config --global user.name "$(gh api /user | jq -r '.name')"
@@ -86,13 +85,36 @@ jobs:
 
           # Create PR
           git push -u origin "$BRANCH_NAME"
-          gh pr create \
-            --base main
-            --head "$BRANCH_NAME"
-            --fill > GH_PR_URL
           
           # Merge PR
           gh pr merge $GH_PR_URL
+      - name: Create PR
+        id: pr
+        run: echo "link=$(gh pr create \
+            --base main
+            --head "$BRANCH_NAME"
+            --fill)" >> "$GITHUB_OUTPUT"
+  merge:
+    name: Merge release
+    runs-on: ubuntu-latest
+    needs: prepare
+    env:
+      PR_LINK: ${{needs.prepare.outputs.pr}}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Merge PR
+        run: gh pr merge $GH_PR_URL
+  draft:
+    name: Draft release
+    runs-on: ubuntu-latest
+    needs:
+      - get
+      - merge
+    env:
+      PR_LINK: ${{needs.prepare.outputs.pr}}
+      NEXT: ${{needs.get.outputs.next}}
+    steps:
+      - uses: actions/checkout@v3
       - name: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
