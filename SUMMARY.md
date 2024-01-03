@@ -34,3 +34,7 @@
   - [Validating content](./spec/flows/validate-content.md)
   - [Modifying content](./spec/flows/modify-content.md)
   - [Deleting content](./spec/flows/delete-content.md)
+
+---
+
+[Schemas](./schemas/README.md)
