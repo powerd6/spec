@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/powerd6/spec/compare/v0.1.0...HEAD)
 
+### Fixed
+
+- Schemas use HTTPS to refer to themselves and each other
+
 ## [v0.1.0](https://github.com/powerd6/spec/releases/tag/v0.1.0)
 
 ### Added
