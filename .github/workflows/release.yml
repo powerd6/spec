@@ -80,7 +80,7 @@ jobs:
         run: git checkout -b "$BRANCH_NAME"
       - name: Commit
         run: |-
-          git add README.md CHANGELOG.md
+          git add README.md CHANGELOG.md .semver.yaml
           git commit -m "chore: prepare release for $NEXT"
       - name: Push changes
         run: git push -u origin "$BRANCH_NAME"
