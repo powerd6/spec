@@ -62,10 +62,13 @@ jobs:
       - name: update README.md
         run: sed -i "s/$CURRENT/$NEXT/g" README.md
       - name: update CHANGELOG.md
-        run: |-
-          CUR_HEADER="## [Unreleased](https://github.com/powerd6/spec/compare/$CURRENT...HEAD)"
-          NEW_HEADER="## [Unreleased](https://github.com/powerd6/spec/compare/$NEXT...HEAD)\n\n## [$NEXT](https://github.com/powerd6/spec/compare/$CURRENT...$NEXT)"
-          sed -z "s/$CUR_HEADER/$NEW_HEADER/g" -i CHANGELOG.md
+        env:
+          CURRENT_HEADER: "## [Unreleased](https://github.com/powerd6/spec/compare/${{needs.get.outputs.current}}...HEAD)"
+          NEW_HEADER: |-
+            ## [Unreleased](https://github.com/powerd6/spec/compare/${{needs.get.outputs.next}}...HEAD)
+            
+            ## [${{needs.get.outputs.next}}](https://github.com/powerd6/spec/compare/${{needs.get.outputs.current}}...${{needs.get.outputs.next}})
+        run: sed -z "s/$CUR_HEADER/$NEW_HEADER/g" -i CHANGELOG.md
       - name: Debug files
         run: |-
           cat README.md
