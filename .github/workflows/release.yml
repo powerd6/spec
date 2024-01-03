@@ -61,6 +61,7 @@ jobs:
           cat changelog.md.0 > CHANGELOG.md
           (
             echo "## [Unreleased](https://github.com/powerd6/spec/compare/$NEXT...HEAD)"
+            echo ""
             echo "## [$NEXT](https://github.com/powerd6/spec/compare/$CURRENT...$NEXT)"
           ) >> CHANGELOG.md
           cat changelog.md.1 >> CHANGELOG.md
