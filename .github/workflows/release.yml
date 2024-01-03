@@ -56,13 +56,14 @@ jobs:
           head -n 12 CHANGELOG.md > changelog.md.0
           tail -n +14 CHANGELOG.md > changelog.md.1
 
-          cat changelog.md.0 > CHANGELOG.md
+          echo "" > CHANGELOG.md
           (
+            cat changelog.md.0
             echo "## [Unreleased](https://github.com/powerd6/spec/compare/$NEXT...HEAD)"
             echo ""
             echo "## [$NEXT](https://github.com/powerd6/spec/compare/$CURRENT...$NEXT)"
+            cat changelog.md.1
           ) >> CHANGELOG.md
-          cat changelog.md.1 >> CHANGELOG.md
 
           rm changelog.md.*
       - name: Commit changes
