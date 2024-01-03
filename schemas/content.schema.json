@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "http://spec.powerd6.org/schemas/content.schema.json",
+    "$id": "https://spec.powerd6.org/schemas/content.schema.json",
     "title": "Content",
     "description": "Content pieces in powerd6",
     "type": "object",
