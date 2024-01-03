@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "http://spec.powerd6.org/schemas/authorship.schema.json",
+    "$id": "https://spec.powerd6.org/schemas/authorship.schema.json",
     "title": "Authorship",
     "description": "Information regarding authorship and contributions",
     "type": "object",

@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "http://spec.powerd6.org/schemas/module-meta.schema.json",
+    "$id": "https://spec.powerd6.org/schemas/module-meta.schema.json",
     "title": "Module Information",
     "description": "Information regarding a powerd6 module",
     "type": "object",
