@@ -33,7 +33,7 @@ jobs:
       - name: Install semver-cli
         run: |-
           go install github.com/maykonlf/semver-cli/cmd/semver@latest
-          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
       - name: Get current version
         id: current
         run: echo "version=$(semver get release)" >> "$GITHUB_OUTPUT"
@@ -42,7 +42,7 @@ jobs:
         env:
           # TODO: remove 'release' fallback once PR trigger is removed
           FLAG: ${{ inputs.release_type == 'patch' && 'release' || inputs.release_type || 'release' }}
-        run: echo "version=$(semver up $FLAG)" >> "$GITHUB_OUTPUT"
+        run: echo "version=$(semver up "$FLAG")" >> "$GITHUB_OUTPUT"
   update_files:
     name: Prepare release
     runs-on: ubuntu-latest
@@ -76,7 +76,7 @@ jobs:
           git commit -m "chore: prepare release for $NEXT"
       - name: Prepare tag
         run: |-
-          git tag $NEXT
+          git tag "$NEXT"
       - name: Push changes
         # TODO: Remove when PR trigger is removed
         if: github.event_name == 'workflow_dispatch'
