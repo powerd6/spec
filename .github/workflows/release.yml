@@ -113,7 +113,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Merge PR
-        run: gh pr merge "$PR_URL" --admin
+        run: gh pr merge "$PR_URL" --admin --squash
   draft:
     name: Draft release
     runs-on: ubuntu-latest
