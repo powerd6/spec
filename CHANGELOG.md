@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Website now links to schema files
 
-## [0.0.1](https://github.com/powerd6/spec/compare/v0.0.0...v0.0.1)
+## [v0.0.1](https://github.com/powerd6/spec/compare/v0.0.0...v0.0.1)
 
 This is the first sketch of the specification
 
@@ -31,7 +31,7 @@ This is the first sketch of the specification
 
 - Check for CHANGELOG.md updates now works correctly
 
-## [0.0.0](https://github.com/powerd6/spec/releases/tag/v0.0.0)
+## [v0.0.0](https://github.com/powerd6/spec/releases/tag/v0.0.0)
 
 ### Added
 
