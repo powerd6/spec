@@ -54,17 +54,16 @@ jobs:
       - name: update README.md
         run: sed -i "s/$CURRENT/$NEXT/g" README.md
       - name: update CHANGELOG.md
-        env:
-          LINE_SPLIT: 5
         run: |-
-          head -n "$LINE_SPLIT" CHANGELOG.md > changelog.md.0
-          tail -n +"$(($LINE_SPLIT + 1))" CHANGELOG.md > changelog.md.1
-
-          sed -i "s/$CURRENT/$NEXT/g" CHANGELOG.md
+          head -n 12 CHANGELOG.md > changelog.md.0
+          tail -n +13 CHANGELOG.md > changelog.md.1
 
           cat changelog.md.0 > CHANGELOG.md
-          echo "test" >> CHANGELOG.md
+          echo "## [Unreleased](https://github.com/powerd6/spec/compare/$NEXT...HEAD)" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "## [$NEXT](https://github.com/powerd6/spec/compare/$CURRENT...$NEXT)" >> CHANGELOG.md
           cat changelog.md.1 >> CHANGELOG.md
+          rm changelog.md.*
       - name: Debug files
         run: |-
           cat README.md
