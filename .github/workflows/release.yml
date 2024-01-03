@@ -51,6 +51,8 @@ jobs:
     env:
       CURRENT: ${{needs.get.outputs.current}}
       NEXT: ${{needs.get.outputs.next}}
+      BRANCH_NAME: release-${{needs.get.outputs.next}}
+      GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - name: update README.md
@@ -71,14 +73,10 @@ jobs:
 
           rm changelog.md.*
       - name: Configure git
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
         run: |-
           git config --global user.email "$(gh api /user | jq -r '.email')"
           git config --global user.name "$(gh api /user | jq -r '.name')"
       - name: Create branch
-        env:
-          BRANCH_NAME: release-${{env.NEXT}}
         run: git checkout -b "$BRANCH_NAME"
       - name: Commit
         run: |-
