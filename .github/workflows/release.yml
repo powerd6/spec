@@ -47,9 +47,11 @@ jobs:
         run: echo "version=$(semver up "$FLAG")" >> "$GITHUB_OUTPUT"
       - name: Prepare environment variables
         run: |-
-          echo "CURRENT=${{steps.current.outputs.version}}" >> "$GITHUB_ENV"
-          echo "NEXT=${{steps.next.outputs.version}}" >> "$GITHUB_ENV"
-          echo "BRANCH_NAME=release-${{steps.next.outputs.version}}" >> "$GITHUB_ENV"
+          {
+            echo "CURRENT=${{steps.current.outputs.version}}"
+            echo "NEXT=${{steps.next.outputs.version}}"
+            echo "BRANCH_NAME=release-${{steps.next.outputs.version}}"
+          } >> "$GITHUB_ENV"
       - name: update README.md
         run: sed -i "s/$CURRENT/$NEXT/g" README.md
       - name: update CHANGELOG.md
@@ -59,13 +61,13 @@ jobs:
 
           # Reset the file
           echo -n > CHANGELOG.md
-          (
+          {
             cat changelog.md.0
             echo "## [Unreleased](https://github.com/powerd6/spec/compare/$NEXT...HEAD)"
             echo ""
             echo "## [$NEXT](https://github.com/powerd6/spec/releases/tag/$NEXT)"
             cat changelog.md.1
-          ) >> CHANGELOG.md
+          } >> CHANGELOG.md
 
           rm changelog.md.*
       - name: Configure git
