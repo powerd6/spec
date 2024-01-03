@@ -21,12 +21,14 @@ permissions:
   contents: write
 
 jobs:
-  get:
-    name: Get versions
+  prepare:
+    name: Prepare release
     runs-on: ubuntu-latest
     outputs:
       current: ${{ steps.current.outputs.version }}
       next: ${{ steps.next.outputs.version }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -43,17 +45,11 @@ jobs:
         env:
           FLAG: ${{ inputs.release_type == 'patch' && 'release' || inputs.release_type}}
         run: echo "version=$(semver up "$FLAG")" >> "$GITHUB_OUTPUT"
-  prepare:
-    name: Prepare release
-    runs-on: ubuntu-latest
-    needs: get
-    env:
-      CURRENT: ${{needs.get.outputs.current}}
-      NEXT: ${{needs.get.outputs.next}}
-      BRANCH_NAME: release-${{needs.get.outputs.next}}
-      GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
-    steps:
-      - uses: actions/checkout@v3
+      - name: Prepare environment variables
+        run: |-
+          echo "CURRENT=${{steps.current.outputs.version}}" >> "$GITHUB_ENV"
+          echo "NEXT=${{steps.next.outputs.version}}" >> "$GITHUB_ENV"
+          echo "BRANCH_NAME=release-${{steps.next.outputs.version}}" >> "$GITHUB_ENV"
       - name: update README.md
         run: sed -i "s/$CURRENT/$NEXT/g" README.md
       - name: update CHANGELOG.md
@@ -88,22 +84,24 @@ jobs:
     name: Create Pull Request
     runs-on: ubuntu-latest
     needs:
-      - get
       - prepare
     outputs:
       pr: ${{ steps.pr.outputs.link }}
     env:
-      NEXT: ${{needs.get.outputs.next}}
+      NEXT: ${{needs.prepare.outputs.next}}
       GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: release-${{needs.get.outputs.next}}
+          ref: release-${{needs.prepare.outputs.next}}
       - name: Create Pull Request
         id: pr
         run: |-
           PR_URL=$(gh pr create --title "chore: prepare release for $NEXT" --body "")
           echo "link=$PR_URL" >> "$GITHUB_OUTPUT"
+      - name: Document
+        run: |-
+          echo "[PR link](${{ steps.pr.outputs.link }})" >> $GITHUB_STEP_SUMMARY
   merge:
     name: Merge Pull Request
     runs-on: ubuntu-latest
@@ -119,21 +117,28 @@ jobs:
     name: Draft release
     runs-on: ubuntu-latest
     needs:
-      - get
+      - prepare
       - merge
+    outputs:
+      release: ${{ steps.release.outputs.link }}
     env:
-      NEXT: ${{needs.get.outputs.next}}
+      NEXT: ${{needs.prepare.outputs.next}}
       GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - name: Create Release
+        id: release
         run: |-
-          gh release create "$NEXT" \
-            --target main \
-            --title "$NEXT" \
-            --generate-notes \
-            --latest \
-            --draft
+          RELEASE_URL=$(gh release create "$NEXT" \
+          --target main \
+          --title "$NEXT" \
+          --generate-notes \
+          --latest \
+          --draft)
+          echo "link=$RELEASE_URL" >> "$GITHUB_OUTPUT"
+      - name: Document
+        run: |-
+          echo "[Release link](${{ steps.release.outputs.link }})" >> $GITHUB_STEP_SUMMARY
 
 
         
