@@ -67,12 +67,14 @@ jobs:
           cat changelog.md.1 >> CHANGELOG.md
 
           rm changelog.md.*
-      - name: Debug files
+      - name: Commit changes
         run: |-
-          cat README.md
-          echo "  "
-          cat CHANGELOG.md
-          git status
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          git add README.md CHANGELOG.md
+          git commit m "chore: prepare release for $NEXT"
+          git tag $NEXT
+          git push origin main
 
 
         
