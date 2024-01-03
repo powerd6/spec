@@ -44,6 +44,7 @@ jobs:
           FLAG: ${{ inputs.release_type == 'patch' && 'release' || inputs.release_type || 'release' }}
         run: echo "version=$(semver up $FLAG)" >> "$GITHUB_OUTPUT"
   update_files:
+    name: Prepare release
     runs-on: ubuntu-latest
     needs: get
     env:
@@ -72,9 +73,15 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           git add README.md CHANGELOG.md
-          git commit m "chore: prepare release for $NEXT"
+          git commit -m "chore: prepare release for $NEXT"
+      - name: Prepare tag
+        run: |-
           git tag $NEXT
-          git push origin main
+      - name: Push changes
+        # TODO: Remove when PR trigger is removed
+        if: github.event_name == 'workflow_dispatch'
+        run: |-
+          git push origin main --tags
 
 
         
