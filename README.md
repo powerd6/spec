@@ -4,11 +4,11 @@ This is the powerd6 specification, and it documents how the project behaves.
 
 ## Versioning
 
-Current Version: `0.0.1`
+Current Version: `v0.0.1`
 
 > ❗️ **Important**: This specification is unstable and constantly evolving.
 >
-> Until this specification hits version `1.0.0`, there will be **no** stability
+> Until this specification hits version `v1.0.0`, there will be **no** stability
 > guarantees.
 
 This specification follows the [Semantic Versioning](https://semver.org/) conventions.
