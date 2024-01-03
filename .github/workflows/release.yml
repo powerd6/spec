@@ -86,7 +86,7 @@ jobs:
         id: pr
         run: |-
           git push -u origin "$BRANCH_NAME"
-          gh pr create --base --head "$BRANCH_NAME" --fill > PR_URL
+          gh pr create --base main --head "$BRANCH_NAME" --fill > PR_URL
           echo "link=$PR_URL" >> "$GITHUB_OUTPUT"
   merge:
     name: Merge release
