@@ -1,4 +1,5 @@
 name: Release
+run-name: Release ${{inputs.release_type}}: ${{}}
 
 concurrency:
   cancel-in-progress: false
@@ -108,10 +109,11 @@ jobs:
     needs: pr
     env:
       GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
+      PR_URL: ${{needs.pr.outputs.pr}}
     steps:
       - uses: actions/checkout@v3
       - name: Merge PR
-        run: gh pr merge ${{needs.pr.outputs.pr}}
+        run: gh pr merge "$PR_URL"
   draft:
     name: Draft release
     runs-on: ubuntu-latest
