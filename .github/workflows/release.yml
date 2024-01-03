@@ -1,5 +1,5 @@
 name: Release
-run-name: Release ${{inputs.release_type}}: ${{}}
+run-name: Release ${{inputs.release_type}}
 
 concurrency:
   cancel-in-progress: false
