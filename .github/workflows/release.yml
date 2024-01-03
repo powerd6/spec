@@ -61,12 +61,13 @@ jobs:
           head -n 12 CHANGELOG.md > changelog.md.0
           tail -n +14 CHANGELOG.md > changelog.md.1
 
-          echo "" > CHANGELOG.md
+          # Reset the file
+          echo -n > CHANGELOG.md
           (
             cat changelog.md.0
             echo "## [Unreleased](https://github.com/powerd6/spec/compare/$NEXT...HEAD)"
             echo ""
-            echo "## [$NEXT](https://github.com/powerd6/spec/compare/$CURRENT...$NEXT)"
+            echo "## [$NEXT]((https://github.com/powerd6/spec/releases/tag/$NEXT)"
             cat changelog.md.1
           ) >> CHANGELOG.md
 

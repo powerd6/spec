@@ -13,14 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/powerd6/spec/compare/v0.1.0...HEAD)
 
-## [v0.1.0](https://github.com/powerd6/spec/compare/v0.0.1...v0.1.0)
+## [v0.1.0](https://github.com/powerd6/spec/releases/tag/v0.1.0)
 
 ### Added
 
 - Website now links to schema files
 - Feature to automate release of new versions
 
-## [v0.0.1](https://github.com/powerd6/spec/compare/v0.0.0...v0.0.1)
+## [v0.0.1](https://github.com/powerd6/spec/releases/tag/v0.0.1)
 
 This is the first sketch of the specification
 
