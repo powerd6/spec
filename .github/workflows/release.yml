@@ -17,7 +17,7 @@ on:
         default: "patch"
           
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   get:
