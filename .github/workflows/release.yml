@@ -60,4 +60,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: update README.md
-        run: sed -i "s/\$CURRENT/\$NEXT/g" README.md && cat README.md
+        run: sed -i "s/$CURRENT/$NEXT/g" README.md && cat README.md
