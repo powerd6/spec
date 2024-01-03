@@ -104,7 +104,7 @@ jobs:
           echo "link=$PR_URL" >> "$GITHUB_OUTPUT"
       - name: Document
         run: |-
-          echo "[PR link](${{ steps.pr.outputs.link }})" >> $GITHUB_STEP_SUMMARY
+          echo "[PR link](${{ steps.pr.outputs.link }})" >> "$GITHUB_STEP_SUMMARY"
   merge:
     name: Merge Pull Request
     runs-on: ubuntu-latest
@@ -141,7 +141,7 @@ jobs:
           echo "link=$RELEASE_URL" >> "$GITHUB_OUTPUT"
       - name: Document
         run: |-
-          echo "[Release link](${{ steps.release.outputs.link }})" >> $GITHUB_STEP_SUMMARY
+          echo "[Release link](${{ steps.release.outputs.link }})" >> "$GITHUB_STEP_SUMMARY"
 
 
         
