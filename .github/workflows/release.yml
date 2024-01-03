@@ -101,7 +101,7 @@ jobs:
       - name: Create Pull Request
         id: pr
         run: |-
-          gh pr create --title "chore: prepare release for $NEXT" --body "" > PR_URL
+          PR_URL=$(gh pr create --title "chore: prepare release for $NEXT" --body "")
           echo "link=$PR_URL" >> "$GITHUB_OUTPUT"
   merge:
     name: Merge Pull Request
