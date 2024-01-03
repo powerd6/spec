@@ -59,7 +59,9 @@ jobs:
         run: |-
           head -n "$LINE_SPLIT" CHANGELOG.md > changelog.md.0
           tail -n +"$(($LINE_SPLIT + 1))" CHANGELOG.md > changelog.md.1
-          sed -i "s/$CURRENT_HEADER/$NEW_HEADER/g" CHANGELOG.md
+
+          sed -i "s/$CURRENT/$NEXT/g" CHANGELOG.md
+
           cat changelog.md.0 > CHANGELOG.md
           echo "test" >> CHANGELOG.md
           cat changelog.md.1 >> CHANGELOG.md
