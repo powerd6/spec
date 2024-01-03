@@ -60,4 +60,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: update README.md
-        run: sed -i "s/$CURRENT/$NEXT/g" README.md && cat README.md
+        run: sed -i "s/$CURRENT/$NEXT/g" README.md
+      - name: update CHANGELOG.md
+        run: |-
+          CUR_HEADER="## [Unreleased](https://github.com/powerd6/spec/compare/$CURRENT...HEAD)"
+          NEW_HEADER="## [Unreleased](https://github.com/powerd6/spec/compare/$NEXT...HEAD)
+
+          ## [$NEXT](https://github.com/powerd6/spec/compare/$CURRENT...$NEXT)"
+          sed -i "s/$CUR_HEADER/$NEW_HEADER/g" CHANGELOG.md
+      - name: Debug files
+        run: |-
+          cat README.md
+          echo "  "
+          cat CHANGELOG.md
+
+
+        
+
