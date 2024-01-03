@@ -68,25 +68,41 @@ jobs:
           ) >> CHANGELOG.md
 
           rm changelog.md.*
-      - name: Prepare git credentials
+      - name: Prepare Pull Request
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
+          BRANCH_NAME: release-${{env.NEXT}}
         run: |-
+          # Get access to create PRs
+          gh auth refresh -s project
+
+          # Configure git commit user
           git config --global user.email "$(gh api /user | jq -r '.email')"
           git config --global user.name "$(gh api /user | jq -r '.name')"
-      - name: Commit changes
-        run: |-
+
+          # Add and push changes
           git add README.md CHANGELOG.md
           git commit -m "chore: prepare release for $NEXT"
-      - name: Prepare tag
-        run: |-
-          git tag "$NEXT"
-      - name: Push changes
+
+          # Create PR
+          git push -u origin "$BRANCH_NAME"
+          gh pr create \
+            --base main
+            --head "$BRANCH_NAME"
+            --fill > GH_PR_URL
+          
+          # Merge PR
+          gh pr merge $GH_PR_URL
+      - name: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
         run: |-
-          git push
-          git push --tags
+          gh release create "$NEXT" \
+            --target main 
+            --title "$NEXT" \
+            --generate-notes \
+            --latest \
+            --draft
 
 
         
