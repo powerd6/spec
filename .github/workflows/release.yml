@@ -108,8 +108,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: pr
     env:
-      GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
       PR_URL: ${{needs.pr.outputs.pr}}
+      GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - name: Merge PR
@@ -122,11 +122,10 @@ jobs:
       - merge
     env:
       NEXT: ${{needs.get.outputs.next}}
+      GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - name: Create Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
         run: |-
           gh release create "$NEXT" \
             --target main \
