@@ -105,7 +105,6 @@ jobs:
       - get
       - merge
     env:
-      PR_LINK: ${{needs.prepare.outputs.pr}}
       NEXT: ${{needs.get.outputs.next}}
     steps:
       - uses: actions/checkout@v3
