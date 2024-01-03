@@ -5,8 +5,6 @@ concurrency:
   group: '${{ github.workflow }}'
 
 on:
-  # TODO: remove me before merging
-  pull_request: 
   workflow_dispatch:
     inputs:
       release_type:
@@ -40,8 +38,7 @@ jobs:
       - name: Get next version
         id: next
         env:
-          # TODO: remove 'release' fallback once PR trigger is removed
-          FLAG: ${{ inputs.release_type == 'patch' && 'release' || inputs.release_type || 'release' }}
+          FLAG: ${{ inputs.release_type == 'patch' && 'release' || inputs.release_type}}
         run: echo "version=$(semver up "$FLAG")" >> "$GITHUB_OUTPUT"
   update_files:
     name: Prepare release
@@ -78,8 +75,6 @@ jobs:
         run: |-
           git tag "$NEXT"
       - name: Push changes
-        # TODO: Remove when PR trigger is removed
-        if: github.event_name == 'workflow_dispatch'
         run: |-
           git push origin main --tags
 
