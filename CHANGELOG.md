@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Website now links to schema files
+- Feature to automate release of new versions
 
 ## [v0.0.1](https://github.com/powerd6/spec/compare/v0.0.0...v0.0.1)
 
