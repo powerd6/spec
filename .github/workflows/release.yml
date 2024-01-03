@@ -46,8 +46,6 @@ jobs:
     name: Prepare release
     runs-on: ubuntu-latest
     needs: get
-    outputs:
-      pr: ${{ steps.pr.outputs.link }}
     env:
       CURRENT: ${{needs.get.outputs.current}}
       NEXT: ${{needs.get.outputs.next}}
@@ -82,18 +80,33 @@ jobs:
         run: |-
           git add README.md CHANGELOG.md
           git commit -m "chore: prepare release for $NEXT"
-      - name: Create PR
+      - name: Push changes
+        run: git push -u origin "$BRANCH_NAME"
+  pr:
+    name: Prepare release
+    runs-on: ubuntu-latest
+    needs:
+      - get
+      - prepare
+    outputs:
+      pr: ${{ steps.pr.outputs.link }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: release-${{needs.get.outputs.next}}
+      - name: Create Pull Request
         id: pr
         run: |-
-          git push -u origin "$BRANCH_NAME"
-          gh pr create --base main --head "origin/$BRANCH_NAME" --fill > PR_URL
+          gh pr create --fill > PR_URL
           echo "link=$PR_URL" >> "$GITHUB_OUTPUT"
   merge:
     name: Merge release
     runs-on: ubuntu-latest
-    needs: prepare
+    needs: pr
     env:
-      PR_LINK: ${{needs.prepare.outputs.pr}}
+      PR_LINK: ${{needs.pr.outputs.pr}}
     steps:
       - uses: actions/checkout@v3
       - name: Merge PR
