@@ -56,13 +56,15 @@ jobs:
       - name: update CHANGELOG.md
         run: |-
           head -n 12 CHANGELOG.md > changelog.md.0
-          tail -n +13 CHANGELOG.md > changelog.md.1
+          tail -n +14 CHANGELOG.md > changelog.md.1
 
           cat changelog.md.0 > CHANGELOG.md
-          echo "## [Unreleased](https://github.com/powerd6/spec/compare/$NEXT...HEAD)" >> CHANGELOG.md
-          echo "" >> CHANGELOG.md
-          echo "## [$NEXT](https://github.com/powerd6/spec/compare/$CURRENT...$NEXT)" >> CHANGELOG.md
+          (
+            echo "## [Unreleased](https://github.com/powerd6/spec/compare/$NEXT...HEAD)"
+            echo "## [$NEXT](https://github.com/powerd6/spec/compare/$CURRENT...$NEXT)"
+          ) >> CHANGELOG.md
           cat changelog.md.1 >> CHANGELOG.md
+          
           rm changelog.md.*
       - name: Debug files
         run: |-
