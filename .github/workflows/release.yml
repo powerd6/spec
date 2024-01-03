@@ -70,8 +70,9 @@ jobs:
           rm changelog.md.*
       - name: Configure git
         run: |-
-          git config --global user.email "$(gh api /user | jq -r '.email')"
-          git config --global user.name "$(gh api /user | jq -r '.name')"
+          gh api /user > user.json
+          git config --global user.email "$(jq -r '.email' user.json)"
+          git config --global user.name "$(jq -r '.name' user.json)"
       - name: Create branch
         run: git checkout -b "$BRANCH_NAME"
       - name: Commit
