@@ -5,6 +5,7 @@ concurrency:
   group: '${{ github.workflow }}'
 
 on:
+  pull_request: 
   workflow_dispatch:
     inputs:
       release_type:
