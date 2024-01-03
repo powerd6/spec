@@ -70,30 +70,29 @@ jobs:
           ) >> CHANGELOG.md
 
           rm changelog.md.*
-      - name: Prepare Pull Request
+      - name: Configure git
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
-          BRANCH_NAME: release-${{env.NEXT}}
         run: |-
-          # Configure git commit user
           git config --global user.email "$(gh api /user | jq -r '.email')"
           git config --global user.name "$(gh api /user | jq -r '.name')"
-
-          # Add and push changes
+      - name: Create branch
+        env:
+          BRANCH_NAME: release-${{env.NEXT}}
+        run: git checkout -b "$BRANCH_NAME"
+      - name: Commit
+        run: |-
           git add README.md CHANGELOG.md
           git commit -m "chore: prepare release for $NEXT"
-
-          # Create PR
-          git push -u origin "$BRANCH_NAME"
-          
-          # Merge PR
-          gh pr merge $GH_PR_URL
       - name: Create PR
         id: pr
-        run: echo "link=$(gh pr create \
+        run: |-
+          git push -u origin "$BRANCH_NAME"
+          gh pr create \
             --base main
             --head "$BRANCH_NAME"
-            --fill)" >> "$GITHUB_OUTPUT"
+            --fill > PR_URL
+          echo "link=$PR_URL" >> "$GITHUB_OUTPUT"
   merge:
     name: Merge release
     runs-on: ubuntu-latest
