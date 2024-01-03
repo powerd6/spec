@@ -68,7 +68,7 @@ jobs:
             ## [Unreleased](https://github.com/powerd6/spec/compare/${{needs.get.outputs.next}}...HEAD)
             
             ## [${{needs.get.outputs.next}}](https://github.com/powerd6/spec/compare/${{needs.get.outputs.current}}...${{needs.get.outputs.next}})
-        run: sed -z "s/$CUR_HEADER/$NEW_HEADER/g" -i CHANGELOG.md
+        run: sed -i "s/$CUR_HEADER/$NEW_HEADER/g" CHANGELOG.md
       - name: Debug files
         run: |-
           cat README.md
