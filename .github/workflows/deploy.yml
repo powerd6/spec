@@ -94,6 +94,7 @@ jobs:
     needs: 
       - setup
       - build
+      - attach
     steps:
       - uses: actions/checkout@v3
       - name: Download current release
