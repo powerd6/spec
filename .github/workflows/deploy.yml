@@ -107,12 +107,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
         run: |-
+          cd ./book/versions
           for RELEASE in $(gh release list --exclude-drafts | cut -f1);
           do
             echo "Downloading $RELEASE"
-            gh release download $RELEASE --pattern 'v*' --output "./book/versions/$RELEASE"
+            gh release download $RELEASE --pattern 'v*'
             echo "Extracting $RELEASE"
-            tar -xvf "./book/versions/$RELEASE" --one-top-level
+            tar -xvf "$RELEASE.tar" --one-top-level
           done
       - name: Debug versions
         run: |-
