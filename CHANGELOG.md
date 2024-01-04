@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!-- markdown-link-check-disable -->
 ## [Unreleased](https://github.com/powerd6/spec/compare/v0.3.1...HEAD)
 
+### Changed
+
+- Migrate published schemas to [`draft-07`](https://json-schema.org/draft-07/json-schema-release-notes)
+
 ## [v0.3.1](https://github.com/powerd6/spec/releases/tag/v0.3.1)
 
 ### Fixed
