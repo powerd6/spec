@@ -27,6 +27,7 @@ jobs:
     outputs:
       current: ${{ steps.current.outputs.version }}
       next: ${{ steps.next.outputs.version }}
+      branch: ${{ steps.branch.outputs.branch }}
     env:
       GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
     steps:
@@ -38,8 +39,11 @@ jobs:
           gh api /user > user.json
           git config --global user.email "$(jq -r '.email' user.json)"
           git config --global user.name "$(jq -r '.name' user.json)"
+      - name: Prepare branch name
+        id: branch
+        run: echo "branch=release${{ github.run_id }}" >> "$GITHUB_OUTPUT"
       - name: Create branch
-        run: git checkout -b "$BRANCH_NAME"
+        run: git checkout -b "${{ steps.branch.outputs.branch }}"
       - name: Install semver-cli
         run: |-
           go install github.com/maykonlf/semver-cli/cmd/semver@latest
@@ -61,7 +65,6 @@ jobs:
           {
             echo "CURRENT=${{steps.current.outputs.version}}"
             echo "NEXT=${{steps.next.outputs.version}}"
-            echo "BRANCH_NAME=release-${{steps.next.outputs.version}}"
           } >> "$GITHUB_ENV"
       - name: update README.md
         run: |-
@@ -106,7 +109,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: release-${{needs.prepare.outputs.next}}
+          ref: ${{needs.prepare.outputs.branch}}
       - name: Create Pull Request
         id: pr
         run: |-
