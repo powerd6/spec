@@ -1,5 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$schema": "https://json-schema.org/draft-07/schema",
     "$id": "https://spec.powerd6.org/schemas/content.schema.json",
     "title": "Content",
     "description": "Content pieces in powerd6",
