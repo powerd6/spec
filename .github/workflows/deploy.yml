@@ -85,6 +85,8 @@ jobs:
           -cvf "${{needs.setup.outputs.ref}}.tar" \
           --exclude=.git \
           --exclude=.github \
+          --exclude=.vscode \
+          --exclude=bin \
           ./
       - name: Attach to release
         env:
