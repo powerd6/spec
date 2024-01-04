@@ -1,4 +1,5 @@
 name: Deploy
+run-name: ${{ github.event_name == 'release' && github.ref_name || inputs.version }}
 
 concurrency:
   cancel-in-progress: false
