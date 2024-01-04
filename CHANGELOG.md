@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/powerd6/spec/compare/v0.1.2...HEAD)
 
+### Added
+
+- Releases are now attached to the Github release
+
 ## [v0.1.2](https://github.com/powerd6/spec/releases/tag/v0.1.2)
 
 ### Fixed
