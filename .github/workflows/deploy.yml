@@ -121,16 +121,6 @@ jobs:
               tar -xvf "$RELEASE.tar" --one-top-level
             fi
           done
-      - name: Debug versions
-        run: |-
-          echo "########################################"
-          echo "book"
-          cd book
-          ls -al
-          echo "########################################"
-          echo "book/versions"
-          cd versions
-          ls -al
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
         with:
