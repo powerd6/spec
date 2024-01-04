@@ -83,12 +83,40 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
         run: gh release upload ${{needs.setup.outputs.ref}} ${{needs.setup.outputs.ref}}.tar --clobber
-  deploy:
-    name: Deploy website
+  versions:
+    name: Attach previous versions
     runs-on: ubuntu-latest
     needs: 
       - setup
       - build
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download current release
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GH_ADMIN_TOKEN }}
+          name: ${{needs.setup.outputs.ref}}
+          path: book
+      - name: Download previous versions
+        run: |-
+          for RELEASE in $(gh release list --exclude-drafts | cut -f1);
+          do
+            echo "Downloading $RELEASE"
+            gh release download $RELEASE --pattern 'v*.tar' --output "book/versions/$RELEASE"
+          done
+      - name: Debug versions
+        run: |-
+          cd book/versions
+          ls -al
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: book
+  deploy:
+    name: Deploy website
+    runs-on: ubuntu-latest
+    needs:
+      - versions
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -99,6 +127,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          token: ${{ secrets.GH_ADMIN_TOKEN }}
-          artifact_name: ${{needs.setup.outputs.ref}}
