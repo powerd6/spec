@@ -8,6 +8,7 @@ on:
   release:
     types:
       - published
+      - edited
 
 permissions:
   contents: read
@@ -56,7 +57,7 @@ jobs:
       - name: Attach to release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
-        run: gh release upload ${{ github.ref_name }} ${{ github.ref_name }}.tar
+        run: gh release upload ${{ github.ref_name }} ${{ github.ref_name }}.tar --clobber
   deploy:
     name: Deploy website
     runs-on: ubuntu-latest
