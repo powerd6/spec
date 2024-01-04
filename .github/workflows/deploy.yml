@@ -7,8 +7,7 @@ concurrency:
 on:
   release:
     types:
-      - prereleased
-      - released
+      - published
 
 permissions:
   contents: read
