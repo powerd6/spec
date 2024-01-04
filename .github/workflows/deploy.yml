@@ -129,7 +129,7 @@ jobs:
           ls -al
           echo "########################################"
           echo "book/versions"
-          cd book/versions
+          cd versions
           ls -al
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
