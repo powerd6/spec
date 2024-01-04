@@ -112,8 +112,12 @@ jobs:
           do
             echo "Downloading $RELEASE"
             gh release download $RELEASE --pattern 'v*'
-            echo "Extracting $RELEASE"
-            tar -xvf "$RELEASE.tar" --one-top-level
+            if [ -e "$RELEASE.tar" ]; then
+              echo "Extracting $RELEASE"
+              tar -xvf "$RELEASE.tar" --one-top-level
+            else
+              echo "The release $RELEASE did not have an attached artefact."
+            fi
           done
       - name: Debug versions
         run: |-
