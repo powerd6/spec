@@ -115,7 +115,7 @@ jobs:
           for RELEASE in $(gh release list --exclude-drafts | cut -f1);
           do
             echo "Downloading $RELEASE"
-            gh release download $RELEASE --pattern 'v*' || echo "The release $RELEASE did not have an attached artefact."
+            gh release download "$RELEASE" --pattern 'v*' || echo "The release $RELEASE did not have an attached artefact."
             if [ -e "$RELEASE.tar" ]; then
               echo "Extracting $RELEASE"
               tar -xvf "$RELEASE.tar" --one-top-level
