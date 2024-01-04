@@ -95,7 +95,7 @@ jobs:
           git add book.toml
           git commit -m "update book.toml"
       - name: Push changes
-        run: git push -u origin "$BRANCH_NAME"
+        run: git push -u origin "${{ steps.branch.outputs.branch }}"
   pr:
     name: Create Pull Request
     runs-on: ubuntu-latest
