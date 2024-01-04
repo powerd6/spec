@@ -98,6 +98,8 @@ jobs:
           name: ${{needs.setup.outputs.ref}}
           path: book
       - name: Download previous versions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
         run: |-
           for RELEASE in $(gh release list --exclude-drafts | cut -f1);
           do
