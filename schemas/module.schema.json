@@ -11,7 +11,7 @@
         "authors": {
             "type": "array",
             "items": {
-                "$ref": "https://spec.powerd6.org/schemas/module-meta.schema.json"
+                "$ref": "https://spec.powerd6.org/schemas/authorship.schema.json"
             }
         },
         "contents": {

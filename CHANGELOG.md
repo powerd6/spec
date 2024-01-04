@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!-- markdown-link-check-disable -->
 ## [Unreleased](https://github.com/powerd6/spec/compare/v0.4.0...HEAD)
 
+### Fixed
+
+- Main schema refers to authorship correctly
+
 ## [v0.4.0](https://github.com/powerd6/spec/releases/tag/v0.4.0)
 
 ### Changed
