@@ -33,6 +33,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_ADMIN_TOKEN }}
+      - name: Configure git
+        run: |-
+          gh api /user > user.json
+          git config --global user.email "$(jq -r '.email' user.json)"
+          git config --global user.name "$(jq -r '.name' user.json)"
+      - name: Create branch
+        run: git checkout -b "$BRANCH_NAME"
       - name: Install semver-cli
         run: |-
           go install github.com/maykonlf/semver-cli/cmd/semver@latest
@@ -44,7 +51,11 @@ jobs:
         id: next
         env:
           FLAG: ${{ inputs.release_type == 'patch' && 'release' || inputs.release_type}}
-        run: echo "version=$(semver up "$FLAG")" >> "$GITHUB_OUTPUT"
+        run: |-
+          semver up "$FLAG"
+          echo "version=$(semver get release)" >> "$GITHUB_OUTPUT"
+          git add .semver.yaml
+          git commit -m "update .semver.yaml"
       - name: Prepare environment variables
         run: |-
           {
@@ -53,7 +64,10 @@ jobs:
             echo "BRANCH_NAME=release-${{steps.next.outputs.version}}"
           } >> "$GITHUB_ENV"
       - name: update README.md
-        run: sed -i "s/$CURRENT/$NEXT/g" README.md
+        run: |-
+          sed -i "s/$CURRENT/$NEXT/g" README.md
+          git add README.md
+          git commit -m "update README.md"
       - name: update CHANGELOG.md
         run: |-
           head -n 12 CHANGELOG.md > changelog.md.0
@@ -70,17 +84,13 @@ jobs:
           } >> CHANGELOG.md
 
           rm changelog.md.*
-      - name: Configure git
+          git add CHANGELOG.md
+          git commit -m "update CHANGELOG.md"
+      - name: update book.toml
         run: |-
-          gh api /user > user.json
-          git config --global user.email "$(jq -r '.email' user.json)"
-          git config --global user.name "$(jq -r '.name' user.json)"
-      - name: Create branch
-        run: git checkout -b "$BRANCH_NAME"
-      - name: Commit
-        run: |-
-          git add README.md CHANGELOG.md .semver.yaml
-          git commit -m "chore: prepare release for $NEXT"
+          sed -i "s/$CURRENT/$NEXT/g" book.toml
+          git add book.toml
+          git commit -m "update book.toml"
       - name: Push changes
         run: git push -u origin "$BRANCH_NAME"
   pr:
