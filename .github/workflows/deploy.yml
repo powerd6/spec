@@ -113,6 +113,12 @@ jobs:
           done
       - name: Debug versions
         run: |-
+          echo "########################################"
+          echo "book"
+          cd book
+          ls -al
+          echo "########################################"
+          echo "book/versions"
           cd book/versions
           ls -al
       - name: Upload Pages artifact
