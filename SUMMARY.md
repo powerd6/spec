@@ -37,4 +37,8 @@
 
 ---
 
-[Schemas](./schemas/README.md)
+- [Schemas](./schemas/README.md)
+  
+---
+
+[Other versions](./versions/versions.md)

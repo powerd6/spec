@@ -78,17 +78,58 @@ jobs:
           name: ${{needs.setup.outputs.ref}}
           path: book
       - name: Compress
-        run: tar -cvf ${{needs.setup.outputs.ref}}.tar ./book
+        run: |-
+          tar \
+          --dereference --hard-dereference \
+          --directory "./book" \
+          -cvf "${{needs.setup.outputs.ref}}.tar" \
+          --exclude=.git \
+          --exclude=.github \
+          --exclude=.vscode \
+          --exclude=bin \
+          ./
       - name: Attach to release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
         run: gh release upload ${{needs.setup.outputs.ref}} ${{needs.setup.outputs.ref}}.tar --clobber
-  deploy:
-    name: Deploy website
+  versions:
+    name: Fetch previous versions
     runs-on: ubuntu-latest
     needs: 
       - setup
       - build
+      - attach
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download current release
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GH_ADMIN_TOKEN }}
+          name: ${{needs.setup.outputs.ref}}
+          path: book
+      - name: Download previous versions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
+        run: |-
+          cd ./book/versions
+          for RELEASE in $(gh release list --exclude-drafts | cut -f1);
+          do
+            echo "Downloading $RELEASE"
+            gh release download "$RELEASE" --pattern 'v*' || echo "The release $RELEASE did not have an attached artefact."
+            if [ -e "$RELEASE.tar" ]; then
+              echo "Extracting $RELEASE"
+              tar -xvf "$RELEASE.tar" --one-top-level
+            fi
+          done
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: book
+  deploy:
+    name: Deploy website
+    runs-on: ubuntu-latest
+    needs:
+      - versions
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -99,6 +140,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          token: ${{ secrets.GH_ADMIN_TOKEN }}
-          artifact_name: ${{needs.setup.outputs.ref}}
