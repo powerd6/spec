@@ -89,6 +89,23 @@ jobs:
           rm changelog.md.*
           git add CHANGELOG.md
           git commit -m "update CHANGELOG.md"
+      - name: update versions.md
+        run: |-
+          cd versions
+          head -n 5 versions.md > versions.md.0
+          tail -n +6 versions.md > versions.md.1
+
+          # Reset the file
+          echo -n > versions.md
+          {
+            cat versions.md.0
+            echo "- [$NEXT](./$NEXT/)"
+            cat versions.md.1
+          } >> versions.md
+
+          rm versions.md.*
+          git add versions.md
+          git commit -m "update versions.md"
       - name: update book.toml
         run: |-
           sed -i "s/$CURRENT/$NEXT/g" book.toml
