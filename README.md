@@ -4,7 +4,7 @@ This is the powerd6 specification, and it documents how the project behaves.
 
 ## Versioning
 
-Current Version: `v0.1.2`
+Current Version: `v0.2.0`
 
 > ❗️ **Important**: This specification is unstable and constantly evolving.
 >
