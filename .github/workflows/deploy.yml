@@ -123,6 +123,7 @@ jobs:
               echo "The release $RELEASE did not have an attached artefact."
             fi
           done
+          exit 0
       - name: Debug versions
         run: |-
           echo "########################################"
