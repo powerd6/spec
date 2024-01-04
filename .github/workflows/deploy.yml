@@ -109,7 +109,9 @@ jobs:
           for RELEASE in $(gh release list --exclude-drafts | cut -f1);
           do
             echo "Downloading $RELEASE"
-            gh release download $RELEASE --pattern 'v*' --output "book/versions/$RELEASE"
+            gh release download $RELEASE --pattern 'v*' --output "./book/versions/$RELEASE"
+            echo "Extracting $RELEASE"
+            tar -xvf "./book/versions/$RELEASE" --one-top-level
           done
       - name: Debug versions
         run: |-
