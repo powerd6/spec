@@ -78,7 +78,7 @@ jobs:
           name: ${{needs.setup.outputs.ref}}
           path: book
       - name: Compress
-        run: tar -cvf ${{needs.setup.outputs.ref}}.tar ./book
+        run: tar -C ./book -cvf ${{needs.setup.outputs.ref}}.tar ./
       - name: Attach to release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
