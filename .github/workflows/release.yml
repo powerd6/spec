@@ -73,8 +73,8 @@ jobs:
           git commit -m "update README.md"
       - name: update CHANGELOG.md
         run: |-
-          head -n 12 CHANGELOG.md > changelog.md.0
-          tail -n +14 CHANGELOG.md > changelog.md.1
+          head -n 13 CHANGELOG.md > changelog.md.0
+          tail -n +15 CHANGELOG.md > changelog.md.1
 
           # Reset the file
           echo -n > CHANGELOG.md
