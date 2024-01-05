@@ -119,6 +119,9 @@ jobs:
             if [ -e "$RELEASE.tar" ]; then
               echo "Extracting $RELEASE"
               tar -xvf "$RELEASE.tar" --one-top-level
+              echo "Patching version page"
+              rm "$RELEASE/versions/versions.html"
+              cp ./versions.html "$RELEASE/versions/"
             fi
           done
       - name: Upload Pages artifact
