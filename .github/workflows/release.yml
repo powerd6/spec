@@ -99,7 +99,7 @@ jobs:
           echo -n > versions.md
           {
             cat versions.md.0
-            echo "- [$NEXT](./$NEXT/)"
+            echo "- [$NEXT](/versions/$NEXT/)"
             cat versions.md.1
           } >> versions.md
 
