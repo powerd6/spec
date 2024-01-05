@@ -11,7 +11,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 <!-- markdown-link-check-disable -->
-## [Unreleased](https://github.com/powerd6/spec/compare/v0.4.2...HEAD)
+## [Unreleased](https://github.com/powerd6/spec/compare/v0.4.3...HEAD)
+
+## [v0.4.3](https://github.com/powerd6/spec/releases/tag/v0.4.3)
 
 ## [v0.4.2](https://github.com/powerd6/spec/releases/tag/v0.4.2)
 
