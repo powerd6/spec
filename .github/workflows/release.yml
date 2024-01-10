@@ -43,7 +43,7 @@ jobs:
         run: echo "branch=release${{ github.run_id }}" >> "$GITHUB_OUTPUT"
       - name: Create branch
         run: git checkout -b "${{ steps.branch.outputs.branch }}"
-      - uses: powerd6/.github/.github/actions/version_bump
+      - uses: powerd6/.github/.github/actions/version_bump@main
         id: version
         with:
           release_type: ${{ inputs.release_type }}
