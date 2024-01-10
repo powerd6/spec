@@ -109,7 +109,3 @@ jobs:
       branch: ${{ needs.prepare.outputs.branch }}
     secrets:
       GH_ADMIN_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
-
-
-        
-
