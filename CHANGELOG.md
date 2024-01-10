@@ -13,7 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!-- markdown-link-check-disable -->
 ## [Unreleased](https://github.com/powerd6/spec/compare/v0.4.3...HEAD)
 
+### Changed
+
+- Moved release workflow to shared component
+
 ## [v0.4.3](https://github.com/powerd6/spec/releases/tag/v0.4.3)
+
+### Fixed
+
+- Previous versions now have the correct links
 
 ## [v0.4.2](https://github.com/powerd6/spec/releases/tag/v0.4.2)
 
