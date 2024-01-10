@@ -3,6 +3,7 @@
 Here are all the previously available versions of the specification:
 
 <!-- markdown-link-check-disable -->
+- [v0.4.4](/versions/v0.4.4/)
 - [v0.4.3](/versions/v0.4.3/)
 - [v0.4.2](/versions/v0.4.2/)
 - [v0.4.1](/versions/v0.4.1/)
