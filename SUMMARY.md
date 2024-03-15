@@ -42,3 +42,4 @@
 ---
 
 [Other versions](./versions/versions.md)
+[Changelog](./CHANGELOG.md)
